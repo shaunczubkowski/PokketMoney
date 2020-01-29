@@ -1,0 +1,16 @@
+table {
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.container {
+  max-height: 750px;
+}
+
+.row-btn {
+  margin: auto 15px;
+}
+
+.filter {
+  color: whitesmoke;
+}

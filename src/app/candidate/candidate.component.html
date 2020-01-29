@@ -1,0 +1,16 @@
+<app-header></app-header>
+<button
+  mat-button
+  class="return-home"
+  routerLink="/home"
+  activatedRouterLink="activated"
+>
+  Return to Home
+</button>
+<div class="container" *ngIf="candidate">
+  <h1>{{ candidate.name }}</h1>
+  <h2>
+    {{ candidate.office_full | lowercase }} |
+    {{ candidate.party_full | lowercase }}
+  </h2>
+</div>

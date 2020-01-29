@@ -1,0 +1,22 @@
+<div>
+  <mat-form-field class="search">
+    <input
+      type="search"
+      [formControl]="searchField"
+      matInput
+      placeholder="Search by candidate name"
+      (keyup.enter)="search()"
+    />
+  </mat-form-field>
+  <button
+    mat-icon-button
+    class="clear-btn"
+    *ngIf="this.searchField.value"
+    (click)="clear()"
+    aria-label="Clear Search"
+  >
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button mat-button class="search-btn" (click)="search()">Search</button>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+</div>

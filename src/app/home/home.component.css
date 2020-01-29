@@ -1,0 +1,21 @@
+.container {
+  margin: auto 50px;
+}
+
+.message {
+  color: whitesmoke;
+  font-style: italic;
+}
+
+.reset-btn {
+  color: whitesmoke;
+}
+
+.non-table-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spinner {
+  margin: auto;
+}

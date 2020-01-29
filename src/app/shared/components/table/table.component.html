@@ -1,0 +1,67 @@
+<div class="container">
+  <mat-form-field>
+    <input
+      matInput
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Filter Results"
+      class="filter"
+    />
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let candidate">{{ candidate.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="lastFileDate">
+      <th mat-header-cell *matHeaderCellDef>Last File Date</th>
+      <td mat-cell *matCellDef="let candidate">
+        {{ candidate.last_file_date }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="partyFull">
+      <th mat-header-cell *matHeaderCellDef>Party</th>
+      <td mat-cell *matCellDef="let candidate">{{ candidate.party_full }}</td>
+    </ng-container>
+    <ng-container matColumnDef="officeFull">
+      <th mat-header-cell *matHeaderCellDef>Office</th>
+      <td mat-cell *matCellDef="let candidate">{{ candidate.office_full }}</td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>State</th>
+      <td mat-cell *matCellDef="let candidate">{{ candidate.state }}</td>
+    </ng-container>
+    <ng-container matColumnDef="district">
+      <th mat-header-cell *matHeaderCellDef>District</th>
+      <td mat-cell *matCellDef="let candidate">{{ candidate.district }}</td>
+    </ng-container>
+    <ng-container matColumnDef="raisedFunds">
+      <th mat-header-cell *matHeaderCellDef>Raised Funds</th>
+      <td mat-cell *matCellDef="let candidate">
+        {{ candidate.has_raised_funds }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="buttons">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let candidate">
+        <button
+          mat-mini-fab
+          (click)="viewCandidate(candidate.candidate_id)"
+          aria-label="View Candidate"
+          color="primary"
+          class="row-btn"
+          matTooltip="View Candidate"
+          matTooltipPosition="above"
+        >
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

@@ -1,0 +1,30 @@
+.search {
+  width: 350px;
+  color: #ce93d8;
+  margin-top: 15px;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #ce93d8 !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #ce93d8 !important;
+}
+
+.search-btn {
+  color: whitesmoke;
+}
+
+.clear-btn {
+  color: whitesmoke;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
