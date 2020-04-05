@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
   private search(searchString: string): void {
     let query: SearchQuery = new SearchQuery();
     this.listOfCandidates = undefined;
-    this.searchTerm = encodeURI(searchString);
-    query.candidate = this.searchTerm;
+    this.searchTerm = searchString;
+    query.candidate = encodeURI(this.searchTerm);
 
     this.getCandidates(query);
   }

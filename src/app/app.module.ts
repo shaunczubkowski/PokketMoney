@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -10,20 +10,31 @@ import { MaterialModule } from "./material.module";
 import { SearchComponent } from "./shared/components/search/search.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { TableComponent } from "./shared/components/table/table.component";
-import { CandidateComponent } from './candidate/candidate.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HomeModule } from './home/home.module';
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { CandidateTableComponent } from "./shared/components/tables/candidate-table.component";
+import { CandidateComponent } from "./candidate/candidate.component";
+import { BooleanToYesNoPipe } from "./shared/pipes/boolean-to-yes-no.pipe";
+import { CommitteeTableComponent } from "./shared/components/tables/committee-table.component";
+import { FilingFrequencyPipe } from "./shared/pipes/filing-frequency.pipe";
+import { CommitteeComponent } from "./committee/committee.component";
+import { ContributionTableComponent } from "./shared/components/tables/contribution-table.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    SearchComponent,
+    CandidateTableComponent,
+    PageNotFoundComponent,
     HomeComponent,
     HeaderComponent,
     SearchComponent,
-    TableComponent,
     CandidateComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BooleanToYesNoPipe,
+    CommitteeTableComponent,
+    FilingFrequencyPipe,
+    CommitteeComponent,
+    ContributionTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +43,9 @@ import { HomeModule } from './home/home.module';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HomeModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

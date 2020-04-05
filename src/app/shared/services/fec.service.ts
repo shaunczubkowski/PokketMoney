@@ -3,9 +3,12 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { SearchQuery } from "../models/SearchQuery";
+import { CommitteeResults } from "../models/CommitteeResults";
+import { CandidateSearchResults } from "../models/CandidateSearchResults";
+import { ScheduleAResults } from "../models/ScheduleAResults";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class FecService {
   private url: string = environment.apiUrl;
@@ -15,7 +18,7 @@ export class FecService {
 
   public getCandidateById(id: string): Observable<any> {
     let urlParams = `?api_key=${this.key}`;
-    return this.http.get(`${this.url}/candidate/${id}${urlParams}`);
+    return this.http.get<any>(`${this.url}/candidate/${id}${urlParams}`);
   }
 
   public cadidateSearch(queryParams: SearchQuery): Observable<any> {
@@ -24,6 +27,35 @@ export class FecService {
       urlParams += `&office=${queryParams.office}`;
     }
 
-    return this.http.get(`${this.url}/candidates/search/?${urlParams}`);
+    return this.http.get<any>(`${this.url}/candidates/search/?${urlParams}`);
+  }
+
+  public getCommitteesByCandidateId(id: string): Observable<CommitteeResults> {
+    return this.http.get<CommitteeResults>(
+      `${this.url}/candidate/${id}/committees?api_key=${this.key}`
+    );
+  }
+
+  public getCommitteeById(id: string): Observable<CommitteeResults> {
+    return this.http.get<CommitteeResults>(
+      `${this.url}/committee/${id}?api_key=${this.key}`
+    );
+  }
+
+  public getCandidatesByCommitteeId(
+    id: string
+  ): Observable<CandidateSearchResults> {
+    return this.http.get<CandidateSearchResults>(
+      `${this.url}/committee/${id}/candidates?api_key=${this.key}`
+    );
+  }
+
+  public getContribsByCommitteeAndCandidate(
+    candidateId: string,
+    committeeId: string
+  ): Observable<ScheduleAResults> {
+    return this.http.get<ScheduleAResults>(
+      `${this.url}/schedules/schedule_a?candidate_id=${candidateId}&committee_id=${committeeId}&api_key=${this.key}`
+    );
   }
 }

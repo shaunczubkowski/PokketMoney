@@ -1,0 +1,99 @@
+<div>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contributor_last_name }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contributor_first_name }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="middleInitial">
+      <th mat-header-cell *matHeaderCellDef>Middle Initial</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contributor_middle_name }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Address</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contributor_street_1 }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>City</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contributor_city }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>State</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contributor_state }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="zipcode">
+      <th mat-header-cell *matHeaderCellDef>Zip Code</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contributor_zip }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="occupation">
+      <th mat-header-cell *matHeaderCellDef>Occupation</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contributor_occupation }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="employer">
+      <th mat-header-cell *matHeaderCellDef>Employer</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contributor_employer }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="contributionReceiptAmount">
+      <th mat-header-cell *matHeaderCellDef>Receipt Amount</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contribution_receipt_amount }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="contributionReceiptDate">
+      <th mat-header-cell *matHeaderCellDef>Receipt Date</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.contribution_receipt_date | date }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="individual">
+      <th mat-header-cell *matHeaderCellDef>Individual</th>
+      <td mat-cell *matCellDef="let contributor">
+        {{ contributor.is_individual | booleanToYesNo }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="buttons">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let contributor">
+        <button
+          mat-mini-fab
+          (click)="viewPDF(contributor.pdf_url)"
+          aria-label="View ScheduleA PDF"
+          color="primary"
+          class="row-btn"
+          matTooltip="View ScheduleA PDF"
+          matTooltipPosition="above"
+        >
+          <mat-icon>picture_as_pdf</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

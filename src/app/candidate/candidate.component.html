@@ -5,12 +5,57 @@
   routerLink="/home"
   activatedRouterLink="activated"
 >
-  Return to Home
+  Return Home
 </button>
 <div class="container" *ngIf="candidate">
   <h1>{{ candidate.name }}</h1>
-  <h2>
-    {{ candidate.office_full | lowercase }} |
-    {{ candidate.party_full | lowercase }}
-  </h2>
+  <h3>
+    {{ candidate.office_full | titlecase }} |
+    {{ candidate.party_full | titlecase }}
+  </h3>
+  <mat-tab-group (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="Candidate Info">
+      <mat-card>
+        <mat-card-content>
+          <h3 class="more-info-header">
+            Address:
+          </h3>
+          <div class="address" *ngIf="candidate">
+            <p>{{ candidate.address_street_1 }}</p>
+            <p *ngIf="candidate.address_street_2">
+              {{ candidate.address_street_2 }}
+            </p>
+            <p>
+              {{ candidate.address_city }}
+              <span *ngIf="candidate.address_state">, </span>
+              {{ candidate.address_state }} {{ candidate.address_zip }}
+            </p>
+          </div>
+          <h3 class="more-info-header">
+            Raised Funds:
+            <span class="more-info-text">
+              {{ candidate.has_raised_funds | booleanToYesNo }}</span
+            >
+          </h3>
+          <h3 class="more-info-header">
+            Inactive:
+            <span class="more-info-text">
+              {{ candidate.candidate_inactive | booleanToYesNo }}</span
+            >
+          </h3>
+          <h3 class="more-info-header">Election Years:</h3>
+          <mat-list-item *ngFor="let year of candidate.election_years">
+            <p class="more-info-text" mat-line>{{ year }}</p>
+          </mat-list-item>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Committees">
+      <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
+      <app-committee-table
+        [data]="listOfCommittees"
+        *ngIf="!isLoading && listOfCommittees"
+      ></app-committee-table>
+    </mat-tab>
+  </mat-tab-group>
 </div>

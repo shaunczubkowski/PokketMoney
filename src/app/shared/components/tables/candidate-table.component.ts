@@ -4,11 +4,11 @@ import { MatTableDataSource, MatPaginator } from "@angular/material";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-table",
-  templateUrl: "./table.component.html",
-  styleUrls: ["./table.component.css"]
+  selector: "app-candidate-table",
+  templateUrl: "./candidate-table.component.html",
+  styleUrls: ["./table.component.css"],
 })
-export class TableComponent implements OnInit {
+export class CandidateTableComponent implements OnInit {
   @Input() data: Candidate[];
 
   dataSource: MatTableDataSource<Candidate>;
@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
     "officeFull",
     "state",
     "district",
-    "buttons"
+    "buttons",
   ];
 
   constructor(private router: Router) {}

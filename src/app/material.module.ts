@@ -11,7 +11,9 @@ import {
   MatTableModule,
   MatDialogModule,
   MatPaginatorModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatTabsModule,
+  MatCardModule
 } from "@angular/material";
 
 import { MatTooltipModule } from "@angular/material/tooltip";
@@ -29,7 +31,9 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     MatDialogModule,
     MatPaginatorModule,
     MatTooltipModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatCardModule
   ],
   exports: [
     MatSidenavModule,
@@ -43,7 +47,9 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     MatDialogModule,
     MatPaginatorModule,
     MatTooltipModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatCardModule
   ]
 })
 export class MaterialModule {}
