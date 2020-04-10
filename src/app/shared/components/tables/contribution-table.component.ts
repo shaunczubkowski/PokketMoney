@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ViewChild } from "@angular/core";
-import { Committee } from "../../models/Committee";
 import { MatTableDataSource, MatPaginator } from "@angular/material";
 import { Router } from "@angular/router";
 import { ScheduleA } from "../../models/ScheduleA";
@@ -7,7 +6,7 @@ import { ScheduleA } from "../../models/ScheduleA";
 @Component({
   selector: "app-contribution-table",
   templateUrl: "./contribution-table.component.html",
-  styleUrls: ["./contribution-table.component.css"],
+  styleUrls: ["./table.component.css"],
 })
 export class ContributionTableComponent implements OnInit {
   @Input() data: ScheduleA[];
@@ -36,10 +35,11 @@ export class ContributionTableComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.data);
+
     this.dataSource.paginator = this.paginator;
   }
 
   public viewPDF(url: string): void {
-    console.log(url);
+    window.open(url, "_blank");
   }
 }

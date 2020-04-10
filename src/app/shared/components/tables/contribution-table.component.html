@@ -57,7 +57,7 @@
     <ng-container matColumnDef="contributionReceiptAmount">
       <th mat-header-cell *matHeaderCellDef>Receipt Amount</th>
       <td mat-cell *matCellDef="let contributor">
-        {{ contributor.contribution_receipt_amount }}
+        {{ contributor.contribution_receipt_amount | currency }}
       </td>
     </ng-container>
     <ng-container matColumnDef="contributionReceiptDate">

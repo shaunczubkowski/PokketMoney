@@ -18,6 +18,7 @@ import { CommitteeTableComponent } from "./shared/components/tables/committee-ta
 import { FilingFrequencyPipe } from "./shared/pipes/filing-frequency.pipe";
 import { CommitteeComponent } from "./committee/committee.component";
 import { ContributionTableComponent } from "./shared/components/tables/contribution-table.component";
+import { FormTypePipe } from "./shared/pipes/form-type.pipe";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ContributionTableComponent } from "./shared/components/tables/contribut
     FilingFrequencyPipe,
     CommitteeComponent,
     ContributionTableComponent,
+    FormTypePipe,
   ],
   imports: [
     BrowserModule,
